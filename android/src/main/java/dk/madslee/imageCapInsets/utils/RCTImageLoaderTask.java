@@ -3,7 +3,9 @@ package dk.madslee.imageCapInsets.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -24,7 +26,7 @@ public class RCTImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected Bitmap doInBackground(String... params) {
-        if (mUri.startsWith("http")) {
+        if (isUri()) {
             return loadBitmapByExternalURL(mUri);
         }
 
@@ -47,6 +49,15 @@ public class RCTImageLoaderTask extends AsyncTask<String, Void, Bitmap> {
         }
 
         return bitmap;
+    }
+
+    private boolean isUri() {
+        try {
+            Uri uri = Uri.parse(mUri);
+            return uri != null && uri.getScheme() != null;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
