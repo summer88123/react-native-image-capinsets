@@ -1,6 +1,7 @@
 {
   "name": "@hecom/react-native-image-capinsets",
   "main": "index.js",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/summer88123/react-native-image-capinsets.git"
@@ -12,6 +13,9 @@
     "email": "summer88123@163.com"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/summer88123/react-native-image-capinsets",
   "keywords": [
     "capInsets",
