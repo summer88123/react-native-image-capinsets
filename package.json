@@ -1,19 +1,18 @@
 {
-  "name": "react-native-image-capinsets",
+  "name": "@hecom/react-native-image-capinsets",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/madsleejensen/react-native-image-capinsets.git"
+    "url": "https://github.com/summer88123/react-native-image-capinsets.git"
   },
   "version": "0.5.1",
   "description": "android support for Image `capInsets`",
   "author": {
-    "name": "Mads Lee Jensen",
-    "email": "madsleejensen@gmail.com",
-    "url": "http://mads-lee.dk"
+    "name": "Summer88123",
+    "email": "summer88123@163.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/madsleejensen/react-native-image-capinsets",
+  "homepage": "https://github.com/summer88123/react-native-image-capinsets",
   "keywords": [
     "capInsets",
     "9-patch",
