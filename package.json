@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/summer88123/react-native-image-capinsets.git"
   },
+  "scripts": {
+    "patch": "npm version patch -m 'Bump version %s';git push origin master --tags"
+  },
   "version": "0.5.1",
   "description": "android support for Image `capInsets`",
   "author": {
