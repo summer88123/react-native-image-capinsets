@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.NinePatchDrawable;
 import android.widget.ImageView;
+
 import dk.madslee.imageCapInsets.utils.NinePatchBitmapFactory;
 import dk.madslee.imageCapInsets.utils.RCTImageLoaderListener;
 import dk.madslee.imageCapInsets.utils.RCTImageLoaderTask;
@@ -43,13 +44,13 @@ public class RCTImageCapInsetView extends ImageView {
         RCTImageLoaderTask task = new RCTImageLoaderTask(mUri, getContext(), new RCTImageLoaderListener() {
             @Override
             public void onImageLoaded(Bitmap bitmap) {
-                int ratio = Math.round(bitmap.getDensity() / 160);
-                int top = mCapInsets.top * ratio;
-                int right = bitmap.getWidth() - (mCapInsets.right * ratio);
-                int bottom = bitmap.getHeight() - (mCapInsets.bottom * ratio);
-                int left = mCapInsets.left * ratio;
+                int top = dp2px(mCapInsets.top);
+                int right = bitmap.getWidth() - dp2px(mCapInsets.right);
+                int bottom = bitmap.getHeight() - dp2px(mCapInsets.bottom);
+                int left = dp2px(mCapInsets.left);
 
-                NinePatchDrawable ninePatchDrawable = NinePatchBitmapFactory.createNinePathWithCapInsets(getResources(), bitmap, top, left, bottom, right, null);
+                NinePatchDrawable ninePatchDrawable = NinePatchBitmapFactory
+                        .createNinePathWithCapInsets(getResources(), bitmap, top, left, bottom, right, null);
                 setBackground(ninePatchDrawable);
 
                 cache.put(key, ninePatchDrawable);
@@ -57,5 +58,10 @@ public class RCTImageCapInsetView extends ImageView {
         });
 
         task.execute();
+    }
+
+    private int dp2px(float dpValue) {
+        final float scale = getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }
