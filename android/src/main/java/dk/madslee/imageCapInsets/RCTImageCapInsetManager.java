@@ -34,4 +34,10 @@ public class RCTImageCapInsetManager extends SimpleViewManager<RCTImageCapInsetV
         String uri = source.getString("uri");
         view.setSource(uri);
     }
+
+    @ReactProp(name = "ratio")
+    public void setRatio(final RCTImageCapInsetView view, float source) {
+        float ratio = source;
+        view.setRatio(ratio);
+    }
 }

@@ -13,6 +13,7 @@ import dk.madslee.imageCapInsets.utils.RCTImageLoaderTask;
 public class RCTImageCapInsetView extends ImageView {
     private Rect mCapInsets;
     private String mUri;
+    private float mRatio;
 
     public RCTImageCapInsetView(Context context) {
         super(context);
@@ -29,6 +30,11 @@ public class RCTImageCapInsetView extends ImageView {
 
     public void setSource(String uri) {
         mUri = uri;
+        reload();
+    }
+
+    public void setRatio(float ratio) {
+        mRatio = ratio;
         reload();
     }
 
@@ -61,7 +67,7 @@ public class RCTImageCapInsetView extends ImageView {
     }
 
     private int dp2px(float dpValue) {
-        final float scale = getResources().getDisplayMetrics().density;
+        final float scale = mRatio > 0 ? mRatio : getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 }

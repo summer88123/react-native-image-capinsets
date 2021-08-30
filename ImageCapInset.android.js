@@ -13,6 +13,7 @@ class ImageCapInset extends Component {
       children,
       source,
       capInsets,
+      ratio,
       ...rest
     } = this.props;
 
@@ -25,6 +26,7 @@ class ImageCapInset extends Component {
           capInsets={capInsets}
           source={normalizedSource}
           resizeMode={'stretch'}
+          ratio={ratio}
         />
         {children}
       </View>
